@@ -12,7 +12,7 @@ class ScannerController extends GetxController {
       scannedQrcode = await FlutterBarcodeScanner.scanBarcode(
           "#37c976", "Cancel", true, ScanMode.QR);
       if (scannedQrcode != -1) {
-        Get.to(() => TicketDetails(), arguments: {"DocumentID": scannedQrcode});
+        Get.to(() => TicketDetails(), arguments: {scannedQrcode});
       }
     } on PlatformException {
       Get.snackbar("Error", "Something Went Wrong");

@@ -1,13 +1,14 @@
 import 'package:busmate/Constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TicketDetails extends StatelessWidget {
-  late final int id = 1;
   late final String route = "vytilla";
   late final String stop = "kaloor";
   late final int days_remain = 3;
   var issueDate = "12-Jun-23";
   var expiryDate = "12-Jun-23";
+  final String docId = Get.arguments ?? '';
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class TicketDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "#ID$id",
+                        "#ID$docId",
                         style: kGreyTextTicketStyle,
                       ),
                       const SizedBox(height: 40),
