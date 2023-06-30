@@ -1,41 +1,13 @@
 import 'package:busmate/Constants/constants.dart';
-import 'package:busmate/Screens/conductor_home.dart';
 import 'package:flutter/material.dart';
-import 'package:busmate/utils/date_utils.dart';
 
-class DateUtils {
-  final int day;
-  final String month;
-  final int year;
-
-  DateUtils({required this.day, required this.month, required this.year});
-
-  String getFormattedDate() {
-    return '$day $month, $year';
-  }
-}
-
-class TicketDetails extends StatefulWidget {
-  final int id;
-  final String route;
-  final String stop;
-  final int days_remain;
-
-  const TicketDetails({
-    super.key,
-    required this.id,
-    required this.route,
-    required this.days_remain,
-    required this.stop,
-  });
-
-  @override
-  State<TicketDetails> createState() => _TicketDetailsState();
-}
-
-class _TicketDetailsState extends State<TicketDetails> {
-  DateUtils issueDate = DateUtils(day: 15, month: 'June', year: 2023);
-  DateUtils expiryDate = DateUtils(day: 31, month: 'December', year: 2023);
+class TicketDetails extends StatelessWidget {
+  late final int id = 1;
+  late final String route = "vytilla";
+  late final String stop = "kaloor";
+  late final int days_remain = 3;
+  var issueDate = "12-Jun-23";
+  var expiryDate = "12-Jun-23";
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +66,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "#ID${widget.id}",
+                        "#ID$id",
                         style: kGreyTextTicketStyle,
                       ),
                       const SizedBox(height: 40),
@@ -112,7 +84,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                   fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              " ${widget.route}",
+                              " $route",
                               style: kBlackTicketTextSize,
                             ),
                           ],
@@ -135,7 +107,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              " ${widget.stop}",
+                              " $stop",
                               style: kBlackTicketTextSize,
                             ),
                           ],
@@ -158,7 +130,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              " ${widget.days_remain}",
+                              " $days_remain",
                               style: kBlackTicketTextSize,
                             ),
                           ],
@@ -181,7 +153,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              " ${issueDate.getFormattedDate()}",
+                              " ${issueDate}",
                               style: kBlackTicketTextSize,
                             ),
                           ],
@@ -204,7 +176,7 @@ class _TicketDetailsState extends State<TicketDetails> {
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              '${expiryDate.getFormattedDate()}',
+                              '${expiryDate}',
                               style: kBlackTicketTextSize,
                             ),
                           ],
