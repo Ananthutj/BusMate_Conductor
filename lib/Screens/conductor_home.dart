@@ -1,12 +1,14 @@
 import 'package:busmate/Screens/ticket_details.dart';
 import 'package:flutter/material.dart';
 import 'package:busmate/Constants/constants.dart';
-
+import 'package:busmate/Controller/date_controller.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class HomePage extends StatelessWidget {
   @override
   List _places = ['Aluva', 'Vyttila'];
+  final dateController = Get.put(DateController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +48,16 @@ class HomePage extends StatelessWidget {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "12-Jun-13",
-                                      style: kGreyTextStyle,
-                                    ),
+                                    Obx(() => Text(
+                                          DateFormat('dd-MMM-yyyy').format(
+                                              Get.find<DateController>()
+                                                  .currentDate
+                                                  .value),
+                                          style: const TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFFE4E4E4)),
+                                        )),
                                   ],
                                 )),
                           ],
@@ -141,8 +149,9 @@ class HomePage extends StatelessWidget {
                               decoration: const InputDecoration.collapsed(
                                   hintText: 'Select a route',
                                   hintStyle: TextStyle(
-                                    color: kGreyTextColor,
+                                    color: Color(0xFFE4E4E4),
                                   )),
+                              dropdownColor: Colors.grey[400],
                               style: kWhiteHeadingSize.copyWith(
                                   color: Colors.black),
                               items: _places.map((e) {
@@ -156,8 +165,7 @@ class HomePage extends StatelessWidget {
                                               fontWeight: FontWeight.w600))),
                                 );
                               }).toList(),
-                              dropdownColor: Colors.grey,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(5),
                               onChanged: (Object? value) {
                                 print(value);
                               },
