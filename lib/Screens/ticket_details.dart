@@ -14,7 +14,6 @@ class TicketDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kGreenMainTheme,
-      //ackgroundColor: kGreenMainTheme,
       body: Column(
         children: [
           const SizedBox(
