@@ -38,6 +38,7 @@ dependencies:
   pinput: ^2.2.31
   intl: ^0.18.1
   get: ^4.6.5
+  flutter_barcode_scanner: ^2.0.0
   
   
 

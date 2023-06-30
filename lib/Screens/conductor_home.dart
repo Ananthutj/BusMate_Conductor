@@ -2,6 +2,7 @@ import 'package:busmate/Screens/ticket_details.dart';
 import 'package:flutter/material.dart';
 import 'package:busmate/Constants/constants.dart';
 import 'package:busmate/Controller/date_controller.dart';
+import 'package:busmate/Controller/scanner_controller.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -9,6 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   List _places = ['Aluva', 'Vyttila'];
   final dateController = Get.put(DateController());
+  final scannerController = Get.put(ScannerController());
 
   @override
   Widget build(BuildContext context) {
@@ -211,10 +213,7 @@ class HomePage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20)),
                             ),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => TicketDetails()));
+                              scannerController.ScanQr();
                             },
                             child: SizedBox(
                               child: IconButton(
