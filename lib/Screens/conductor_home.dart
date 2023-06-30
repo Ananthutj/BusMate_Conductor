@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
                           Container(
                               margin: const EdgeInsets.only(right: 11),
                               child: const Text(
-                                "ROUTE",
+                                "ROUTE :",
                                 style: TextStyle(
                                     fontSize: 21,
                                     color: Colors.white,
@@ -146,31 +146,39 @@ class HomePage extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 50, right: 50),
-                            child: DropdownButtonFormField(
-                              isExpanded: true,
-                              decoration: const InputDecoration.collapsed(
-                                  hintText: 'Select a route',
-                                  hintStyle: TextStyle(
-                                    color: Color(0xFFE4E4E4),
-                                  )),
-                              dropdownColor: Colors.grey[400],
-                              style: kWhiteHeadingSize.copyWith(
-                                  color: Colors.black),
-                              items: _places.map((e) {
-                                return DropdownMenuItem(
-                                  value: e,
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      child: Text(e,
-                                          style: kWhiteHeadingSize.copyWith(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600))),
-                                );
-                              }).toList(),
-                              borderRadius: BorderRadius.circular(5),
-                              onChanged: (Object? value) {
-                                print(value);
-                              },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white)),
+                              child: DropdownButtonFormField(
+                                iconEnabledColor: Colors.white,
+                                isExpanded: true,
+                                decoration: const InputDecoration.collapsed(
+                                    hintText: 'Select a route',
+                                    hintStyle: TextStyle(
+                                      color: Color(0xFFE4E4E4),
+                                    )),
+                                //dropdownColor: Colors.grey[400],
+                                dropdownColor: kGreenMainTheme,
+                                style: kWhiteHeadingSize.copyWith(
+                                    color: Colors.black),
+                                items: _places.map((e) {
+                                  return DropdownMenuItem(
+                                    value: e,
+                                    child: Container(
+                                        alignment: Alignment.center,
+                                        child: Text(e,
+                                            style: kWhiteHeadingSize.copyWith(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600))),
+                                  );
+                                }).toList(),
+                                borderRadius: BorderRadius.circular(5),
+                                onChanged: (Object? value) {
+                                  print(value);
+                                },
+                              ),
                             ),
                           )
                         ]))),
