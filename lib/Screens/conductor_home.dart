@@ -216,18 +216,7 @@ class HomePage extends StatelessWidget {
                               scannerController.ScanQr();
                             },
                             child: SizedBox(
-                              child: IconButton(
-                                iconSize: 29,
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TicketDetails()));
-                                },
-                                icon: const Icon(Icons.qr_code_scanner,
-                                    color: Colors.white),
-                              ),
+                              child: Icon(Icons.qr_code_scanner),
                             ),
                           ),
                         ),
