@@ -16,7 +16,7 @@ class ScannerController extends GetxController {
   late int remainingRides;
 
   Future<void> readDocumentFields(String documentId) async {
-    Firebase.initializeApp();
+    await Firebase.initializeApp();
     try {
       DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
           .collection('Tickets')

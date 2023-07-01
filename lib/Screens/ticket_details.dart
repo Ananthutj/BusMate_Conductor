@@ -192,7 +192,7 @@ class TicketDetails extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      const Center(
+                      Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
