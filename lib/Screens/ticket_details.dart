@@ -3,12 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TicketDetails extends StatelessWidget {
-  late final String route = "vytilla";
-  late final String stop = "kaloor";
-  late final int days_remain = 3;
-  var issueDate = "12-Jun-23";
-  var expiryDate = "12-Jun-23";
-  final String docId = Get.arguments ?? '';
+  String ticketId;
+  String stop;
+  String expiryDate;
+  String issueDate;
+  String route;
+  int remainingRides;
+  TicketDetails(
+      {required this.route,
+      required this.issueDate,
+      required this.expiryDate,
+      required this.stop,
+      required this.ticketId,
+      required this.remainingRides});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +73,7 @@ class TicketDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "#ID$docId",
+                        "#ID$ticketId",
                         style: kGreyTextTicketStyle,
                       ),
                       const SizedBox(height: 40),
@@ -123,14 +130,14 @@ class TicketDetails extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const Text(
-                              "Days Remaining: ",
+                              "Rides Remaining: ",
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w700),
                             ),
                             Text(
-                              " $days_remain",
+                              " $remainingRides",
                               style: kBlackTicketTextSize,
                             ),
                           ],
@@ -185,11 +192,11 @@ class TicketDetails extends StatelessWidget {
                       const SizedBox(
                         height: 40,
                       ),
-                      Center(
+                      const Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Text("Status", style: kGreyTextTicketStyle),
                           ],
                         ),
