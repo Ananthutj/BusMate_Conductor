@@ -51,11 +51,11 @@ class TicketDetails extends StatelessWidget {
                 )),
           ),
           Expanded(
-            flex: 6,
+            flex: 5,
             child: Center(
               child: Container(
                 // color: Colors.white,
-                margin: const EdgeInsets.all(34),
+                margin: const EdgeInsets.all(30),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -70,7 +70,7 @@ class TicketDetails extends StatelessWidget {
                     color: Colors.white,
                     width: 0.5,
                   ),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(5),
                 ),
                 child: Center(
                     child: Container(
@@ -78,7 +78,15 @@ class TicketDetails extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "#ID$ticketId",
+                      "Ticket",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Text(
+                      "#ID : $ticketId",
                       style: kGreyTextTicketStyle,
                     ),
                     const SizedBox(height: 40),

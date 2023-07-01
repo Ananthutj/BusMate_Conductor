@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -69,13 +67,13 @@ const TextStyle kGreyTextStyle = TextStyle(
 //ticket styles
 
 const TextStyle kGreyTextTicketStyle = TextStyle(
-  fontSize: 22.5,
-  fontWeight: FontWeight.w400,
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
   color: Color(0xff878080),
 );
 
-const TextStyle kBlackTicketTextSize = TextStyle(
-    fontSize: 17.3, color: Colors.black, fontWeight: FontWeight.w400); 
+const TextStyle kBlackTicketTextSize =
+    TextStyle(fontSize: 17.3, color: Colors.black, fontWeight: FontWeight.w400);
 
 const TextStyle kSmallGrey = TextStyle(color: kGreyTextColor, fontSize: 12);
 const TextStyle kLargeGrey =
