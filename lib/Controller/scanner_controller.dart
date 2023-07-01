@@ -16,8 +16,10 @@ class ScannerController extends GetxController {
   late int remainingRides;
 
   Future<void> readDocumentFields(String documentId) async {
-    Firebase.initializeApp();
+    await Firebase.initializeApp();
     try {
+      DocumentReference documentRef =
+          FirebaseFirestore.instance.collection('Tickets').doc(documentId);
       DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
           .collection('Tickets')
           .doc(documentId)
@@ -30,6 +32,7 @@ class ScannerController extends GetxController {
         route = documentSnapshot.get('Route');
         count = documentSnapshot.get('count');
         remainingRides = count - 1;
+        await documentRef.update({'count': remainingRides});
         Get.off(() => TicketDetails(
               route: route,
               expiryDate: expiryDate,
@@ -41,6 +44,7 @@ class ScannerController extends GetxController {
       } else {
         print('Document does not exist');
         Get.snackbar("Document does not exist", scannedQrcode);
+        Get.offAll(() => HomePage());
       }
     } catch (e) {
       print('Error reading document: $e');
