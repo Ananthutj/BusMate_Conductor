@@ -33,7 +33,7 @@ class ScannerController extends GetxController {
         count = documentSnapshot.get('count');
         remainingRides = count - 1;
         await documentRef.update({'count': remainingRides});
-        Get.off(() => TicketDetails(
+        Get.offAll(() => TicketDetails(
               route: route,
               expiryDate: expiryDate,
               issueDate: issueDate,

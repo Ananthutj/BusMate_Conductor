@@ -2,9 +2,10 @@ import 'package:busmate/Constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:busmate/Screens/conductor_home.dart';
+import 'package:busmate/Controller/scanner_controller.dart';
 
 class TicketDetails extends StatelessWidget {
-  final scannerController = Get.find();
+  final scannerController = Get.put(ScannerController());
   String ticketId;
   String stop;
   String expiryDate;
