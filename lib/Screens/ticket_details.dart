@@ -1,8 +1,10 @@
 import 'package:busmate/Constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:busmate/Screens/conductor_home.dart';
 
 class TicketDetails extends StatelessWidget {
+  final scannerController = Get.find();
   String ticketId;
   String stop;
   String expiryDate;
@@ -241,7 +243,7 @@ class TicketDetails extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.pop(context);
+                            Get.off(() => HomePage());
                           },
                           style: ButtonStyle(
                               backgroundColor:
@@ -267,7 +269,9 @@ class TicketDetails extends StatelessWidget {
                                         width: 1, color: kGreenMainTheme))),
                             fixedSize:
                                 MaterialStateProperty.all(const Size(110, 50))),
-                        onPressed: () {},
+                        onPressed: () {
+                          scannerController.ScanQr();
+                        },
                         label: const Text(
                           'Next',
                           style: TextStyle(fontSize: 17),
