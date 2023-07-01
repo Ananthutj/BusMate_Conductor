@@ -1,4 +1,5 @@
 import "package:cloud_firestore/cloud_firestore.dart";
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/services.dart";
 import "package:flutter_barcode_scanner/flutter_barcode_scanner.dart";
 import "package:get/get.dart";
@@ -15,6 +16,7 @@ class ScannerController extends GetxController {
   late int remainingRides;
 
   Future<void> readDocumentFields(String documentId) async {
+    Firebase.initializeApp();
     try {
       DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
           .collection('Tickets')
