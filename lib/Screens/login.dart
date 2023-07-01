@@ -1,8 +1,14 @@
 import 'package:busmate/Constants/constants.dart';
 import 'package:busmate/Screens/conductor_home.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatelessWidget {
+  final auth = FirebaseAuth.instance;
+  late String email;
+  late String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +36,9 @@ class LoginPage extends StatelessWidget {
                   TextFormField(
                     decoration: kTextFieldDecoration,
                     textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      email = value;
+                    },
                   ),
                 ],
               ),
@@ -48,7 +57,9 @@ class LoginPage extends StatelessWidget {
                     decoration: kTextFieldDecoration,
                     textAlign: TextAlign.center,
                     obscureText: true,
-                    obscuringCharacter: '*',
+                    onChanged: (value) {
+                      password = value;
+                    },
                   ),
                 ],
               ),
@@ -60,9 +71,16 @@ class LoginPage extends StatelessWidget {
                 height: 45,
                 margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                  onPressed: () async {
+                    try {
+                      final user = await auth.signInWithEmailAndPassword(
+                          email: email, password: password);
+                      if (user != null) {
+                        Get.off(HomePage());
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: kGreenMainTheme,
