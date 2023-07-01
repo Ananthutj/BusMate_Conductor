@@ -12,13 +12,16 @@ class TicketDetails extends StatelessWidget {
   String issueDate;
   String route;
   int remainingRides;
+  String status;
+
   TicketDetails(
       {required this.route,
       required this.issueDate,
       required this.expiryDate,
       required this.stop,
       required this.ticketId,
-      required this.remainingRides});
+      required this.remainingRides,
+      required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -49,178 +52,176 @@ class TicketDetails extends StatelessWidget {
           ),
           Expanded(
             flex: 6,
-            child: Container(
-              child: Center(
-                child: Container(
-                  // color: Colors.white,
-                  margin: const EdgeInsets.all(34),
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: kGreyTextColor.withOpacity(1),
-                        spreadRadius: 4,
-                        blurRadius: 4,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    color: Colors.white,
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 0.5,
+            child: Center(
+              child: Container(
+                // color: Colors.white,
+                margin: const EdgeInsets.all(34),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: kGreyTextColor.withOpacity(1),
+                      spreadRadius: 4,
+                      blurRadius: 4,
+                      offset: const Offset(0, 3),
                     ),
-                    borderRadius: BorderRadius.circular(30),
+                  ],
+                  color: Colors.white,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 0.5,
                   ),
-                  child: Center(
-                      child: Container(
-                          child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "#ID$ticketId",
-                        style: kGreyTextTicketStyle,
-                      ),
-                      const SizedBox(height: 40),
-                      Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Route: ",
-                              style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Text(
-                              " $route",
-                              style: kBlackTicketTextSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Stop: ",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              " $stop",
-                              style: kBlackTicketTextSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Rides Remaining: ",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              " $remainingRides",
-                              style: kBlackTicketTextSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Issue Date: ",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              " ${issueDate}",
-                              style: kBlackTicketTextSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(left: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Expiry Date: ",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w700),
-                            ),
-                            Text(
-                              '${expiryDate}',
-                              style: kBlackTicketTextSize,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text("Status", style: kGreyTextTicketStyle),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
-                            Text("Active",
-                                style: TextStyle(
-                                    color: kStatusColor,
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.w500))
-                          ],
-                        ),
-                      ),
-                    ],
-                  ))),
+                  borderRadius: BorderRadius.circular(30),
                 ),
+                child: Center(
+                    child: Container(
+                        child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "#ID$ticketId",
+                      style: kGreyTextTicketStyle,
+                    ),
+                    const SizedBox(height: 40),
+                    Container(
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Route: ",
+                            style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            " $route",
+                            style: kBlackTicketTextSize,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Stop: ",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            " $stop",
+                            style: kBlackTicketTextSize,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Rides Remaining: ",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            " $remainingRides",
+                            style: kBlackTicketTextSize,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Issue Date: ",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            " ${issueDate}",
+                            style: kBlackTicketTextSize,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Expiry Date: ",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Text(
+                            expiryDate,
+                            style: kBlackTicketTextSize,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Status", style: kGreyTextTicketStyle),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(status,
+                              style: TextStyle(
+                                  color: kStatusColor,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.w500))
+                        ],
+                      ),
+                    ),
+                  ],
+                ))),
               ),
             ),
           ),

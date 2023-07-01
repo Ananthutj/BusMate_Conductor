@@ -5,6 +5,7 @@ import "package:flutter_barcode_scanner/flutter_barcode_scanner.dart";
 import "package:get/get.dart";
 import 'package:busmate/Screens/ticket_details.dart';
 import 'package:busmate/Screens/conductor_home.dart';
+import "package:intl/intl.dart";
 
 class ScannerController extends GetxController {
   String scannedQrcode = "";
@@ -14,6 +15,17 @@ class ScannerController extends GetxController {
   late String route;
   late int count;
   late int remainingRides;
+  late String status;
+
+  bool isDateExpired(String dateString) {
+    final currentDate = DateTime.now();
+    final dateFormat = DateFormat('dd-MMM-yy');
+    final parsedDate = dateFormat.parse(dateString);
+    final dateToCompare =
+        DateTime(parsedDate.year, parsedDate.month, parsedDate.day);
+
+    return dateToCompare.isBefore(currentDate);
+  }
 
   Future<void> readDocumentFields(String documentId) async {
     await Firebase.initializeApp();
@@ -32,6 +44,14 @@ class ScannerController extends GetxController {
         route = documentSnapshot.get('Route');
         count = documentSnapshot.get('count');
         remainingRides = count - 1;
+        bool expired = isDateExpired(expiryDate);
+        if (expired) {
+          status = "Expired";
+        } else if (remainingRides < 0) {
+          status = "Limit Reached";
+        } else {
+          status = "Active";
+        }
         await documentRef.update({'count': remainingRides});
         Get.offAll(() => TicketDetails(
               route: route,
@@ -40,6 +60,7 @@ class ScannerController extends GetxController {
               remainingRides: remainingRides,
               stop: stop,
               ticketId: documentId,
+              status: status,
             ));
       } else {
         print('Document does not exist');
