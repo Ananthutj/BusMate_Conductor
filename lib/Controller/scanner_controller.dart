@@ -1,4 +1,3 @@
-import "package:busmate/Constants/constants.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/services.dart";
 import "package:flutter_barcode_scanner/flutter_barcode_scanner.dart";
@@ -21,7 +20,6 @@ class ScannerController extends GetxController {
           .collection('Tickets')
           .doc(documentId)
           .get();
-
       if (documentSnapshot.exists) {
         // Extract fields from the document
         stop = documentSnapshot.get('Destination');
@@ -40,9 +38,11 @@ class ScannerController extends GetxController {
             ));
       } else {
         print('Document does not exist');
+        Get.snackbar("Document does not exist", scannedQrcode);
       }
     } catch (e) {
       print('Error reading document: $e');
+      Get.snackbar("Document fetching error", scannedQrcode);
       Get.offAll(() => HomePage());
     }
   }
