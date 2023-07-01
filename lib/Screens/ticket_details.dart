@@ -214,6 +214,7 @@ class TicketDetails extends StatelessWidget {
                         children: [
                           Text(status,
                               style: TextStyle(
+                                fontSize: 35,
                                 fontWeight: FontWeight.w500,
                                 color: (status == 'Active')
                                     ? Colors.green
