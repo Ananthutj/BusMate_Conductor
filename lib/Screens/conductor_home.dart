@@ -12,8 +12,15 @@ class HomePage extends StatelessWidget {
   final dateController = Get.put(DateController());
   final scannerController = Get.put(ScannerController());
 
+
+  // Extract the values from the arguments map
+
   @override
   Widget build(BuildContext context) {
+    final arguments = Get.arguments as Map<String, dynamic>?;
+    final name = arguments?['Name'] as String?;
+    final id = arguments?['id'] as String?;
+    final route = arguments?['Route'] as String?;
     return SafeArea(
       child: Scaffold(
         backgroundColor: kGreenMainTheme,
@@ -100,13 +107,14 @@ class HomePage extends StatelessWidget {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     Text(
-                                      "Conductor ID: ",
+                                      "Conductor ID: ${id}",
                                       style: TextStyle(
                                           fontSize: 24,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500),
                                     ),
-                                    Text("Name: ",
+                                    SizedBox(height: 10,),
+                                    Text("Name: ${name}",
                                         style: TextStyle(
                                             fontSize: 24,
                                             color: Colors.white,
@@ -134,11 +142,11 @@ class HomePage extends StatelessWidget {
                           ),
                           Container(
                               margin: const EdgeInsets.only(right: 11),
-                              child: const Text(
+                              child:  Text(
                                 "ROUTE :",
                                 style: TextStyle(
                                     fontSize: 21,
-                                    color: Colors.white,
+                                    color: Colors.grey[300],
                                     fontWeight: FontWeight.w500),
                               )),
                           const SizedBox(
@@ -147,38 +155,12 @@ class HomePage extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(left: 50, right: 50),
                             child: Container(
+                              width: double.infinity,
                               padding: EdgeInsets.symmetric(horizontal: 10),
-                              height: 40,
+                              height: 45,
                               decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white)),
-                              child: DropdownButtonFormField(
-                                iconEnabledColor: Colors.white,
-                                isExpanded: true,
-                                decoration: const InputDecoration.collapsed(
-                                    hintText: 'Select a route',
-                                    hintStyle: TextStyle(
-                                      color: Color(0xFFE4E4E4),
-                                    )),
-                                //dropdownColor: Colors.grey[400],
-                                dropdownColor: kGreenMainTheme,
-                                style: kWhiteHeadingSize.copyWith(
-                                    color: Colors.black),
-                                items: _places.map((e) {
-                                  return DropdownMenuItem(
-                                    value: e,
-                                    child: Container(
-                                        alignment: Alignment.center,
-                                        child: Text(e,
-                                            style: kWhiteHeadingSize.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w600))),
-                                  );
-                                }).toList(),
-                                borderRadius: BorderRadius.circular(5),
-                                onChanged: (Object? value) {
-                                  print(value);
-                                },
-                              ),
+                                  border: Border.all(color: Colors.white,width: 2)),
+                              child: Center(child: Text('$route',style: const TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.w500),))
                             ),
                           )
                         ]))),
