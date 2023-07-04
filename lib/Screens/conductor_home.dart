@@ -143,7 +143,7 @@ class HomePage extends StatelessWidget {
                           Container(
                               margin: const EdgeInsets.only(right: 11),
                               child:  Text(
-                                "ROUTE :",
+                                "BUS ROUTE :",
                                 style: TextStyle(
                                     fontSize: 21,
                                     color: Colors.grey[300],
