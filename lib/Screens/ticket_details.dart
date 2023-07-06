@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:busmate/Screens/conductor_home.dart';
 import 'package:busmate/Controller/scanner_controller.dart';
-import 'package:busmate/Screens/login.dart';
+import 'login.dart';
 
 class TicketDetails extends StatelessWidget {
   LoginPage login = LoginPage();
@@ -258,7 +258,7 @@ class TicketDetails extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                           login.getData();
+                            login.getData();
                           },
                           style: ButtonStyle(
                               backgroundColor:
