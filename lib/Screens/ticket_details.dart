@@ -6,6 +6,7 @@ import 'package:busmate/Controller/scanner_controller.dart';
 import 'package:busmate/Screens/login.dart';
 
 class TicketDetails extends StatelessWidget {
+  LoginPage login = LoginPage();
   final scannerController = Get.put(ScannerController());
   String ticketId;
   String stop;
@@ -257,7 +258,7 @@ class TicketDetails extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                           LoginPage().getData();
+                           login.getData();
                           },
                           style: ButtonStyle(
                               backgroundColor:

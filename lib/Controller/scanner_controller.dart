@@ -9,6 +9,7 @@ import "package:intl/intl.dart";
 import 'package:busmate/Screens/login.dart';
 
 class ScannerController extends GetxController {
+  LoginPage login = LoginPage();
   String scannedQrcode = "";
   late String stop;
   late String expiryDate;
@@ -66,12 +67,12 @@ class ScannerController extends GetxController {
       } else {
         print('Document does not exist');
         Get.snackbar("Document does not exist", scannedQrcode);
-        LoginPage().getData();
+        login.getData();
       }
     } catch (e) {
       print('Error reading document: $e');
       Get.snackbar("Document fetching error", scannedQrcode);
-      LoginPage().getData();
+      login.getData();
     }
   }
 
