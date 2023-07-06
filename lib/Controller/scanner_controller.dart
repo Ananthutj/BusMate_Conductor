@@ -6,6 +6,7 @@ import "package:get/get.dart";
 import 'package:busmate/Screens/ticket_details.dart';
 import 'package:busmate/Screens/conductor_home.dart';
 import "package:intl/intl.dart";
+import 'package:busmate/Screens/login.dart';
 
 class ScannerController extends GetxController {
   String scannedQrcode = "";
@@ -65,12 +66,12 @@ class ScannerController extends GetxController {
       } else {
         print('Document does not exist');
         Get.snackbar("Document does not exist", scannedQrcode);
-        Get.offAll(() => HomePage());
+        LoginPage().getData();
       }
     } catch (e) {
       print('Error reading document: $e');
       Get.snackbar("Document fetching error", scannedQrcode);
-      Get.offAll(() => HomePage());
+      LoginPage().getData();
     }
   }
 
