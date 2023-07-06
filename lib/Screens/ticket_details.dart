@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:busmate/Screens/conductor_home.dart';
 import 'package:busmate/Controller/scanner_controller.dart';
+import 'login.dart';
 
 class TicketDetails extends StatelessWidget {
+  LoginPage login = LoginPage();
   final scannerController = Get.put(ScannerController());
   String ticketId;
   String stop;
@@ -256,7 +258,7 @@ class TicketDetails extends StatelessWidget {
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            Get.off(() => HomePage());
+                            login.getData();
                           },
                           style: ButtonStyle(
                               backgroundColor:
